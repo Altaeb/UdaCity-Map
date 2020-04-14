@@ -23,10 +23,6 @@ class AddLocationVC: UIViewController {
 
     let textFieldDelegate = TextFieldDelegate()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         self.hidesBottomBarWhenPushed = true
         configureTextfields(textfields: [locationTextField, linkTextField])
@@ -35,6 +31,7 @@ class AddLocationVC: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
 
@@ -118,8 +115,7 @@ class AddLocationVC: UIViewController {
     }
 
     func unsubscribeFromKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 
 }

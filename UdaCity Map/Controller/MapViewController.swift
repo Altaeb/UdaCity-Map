@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         mapView.showAnnotations(mapView.annotations, animated: true)
         loadAnnotations()
     }
@@ -52,7 +53,9 @@ class MapViewController: UIViewController {
     @IBAction func logoff(_ sender: Any) {
         NetworkUtil.logoff { (deleteSession, error) in
             guard let error = error else {
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
                 return
             }
             self.displayAlertMainQueue(error)

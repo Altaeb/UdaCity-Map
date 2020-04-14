@@ -17,11 +17,8 @@ class LoginViewController: UIViewController {
 
     let delegate = UIApplication.shared.delegate as! AppDelegate
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interfaceConfiguration(spin: false)
     }
 
